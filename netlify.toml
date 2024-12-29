@@ -1,0 +1,8 @@
+[build]
+functions = "src"
+
+[[redirects]]
+force = true
+from = "/api/*"
+status = 200
+to = "/.netlify/functions/main/:splat"
