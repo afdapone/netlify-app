@@ -27,6 +27,8 @@ async function scrapper() {
             if (fragment.children[i].nodeName === 'DIV') {
                 const a = fragment.children[i].querySelector('a')
                 match.group = a ? a.textContent.trim().replace(/[^a-z0-9]/gmi, " ").replace(/\s+/g, " ") : '' // [5]
+                match.sport_key = 'soccer_' = match.group.toLowerCase().replace(' ', '_')
+                match.active = true
                 continue
             } else {
                 match.time = fragment.children[i].querySelector('div:nth-child(1)').textContent.trim()
