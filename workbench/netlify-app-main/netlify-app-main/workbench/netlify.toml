@@ -1,0 +1,15 @@
+[[headers]]
+# Define which paths this specific [[headers]] block will cover.
+# https://answers.netlify.com/t/netlify-dev-function-not-found/54748
+for = "/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
+
+[build]
+functions = "src"
+
+[[redirects]]
+  force = true
+  from = "/api"
+  status = 200
+  to = "/.netlify/functions/api/:splat"

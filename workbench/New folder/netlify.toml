@@ -1,0 +1,13 @@
+[build]
+functions = "src"
+  external_node_modules = ["express", "happy-dom"]
+
+  [functions]
+  node_bundler = "esbuild"
+
+
+[[redirects]]
+force = true
+from = "/api/*"
+status = 200
+to = "/.netlify/functions/main/:splat"

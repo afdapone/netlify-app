@@ -4,7 +4,7 @@ import { Window } from 'happy-dom'
 async function scrapper() {
     // Scrape Function
     try {
-        const response = await fetch('https://www.soccervista.c/')
+        const response = await fetch('https://www.soccervista.com/')
         const html = await response.text()
 
         // Set up Happy DOM
@@ -18,11 +18,12 @@ async function scrapper() {
 
         const topPriorityData = document.querySelector("body > div.container.relative.z-20.min-w-\\[375px\\] > main > div.min-md\\:pr-3\\.5.flex.w-full.flex-col.max-md\\:mb-3 > div:nth-child(3) > div.flex.flex-col > div:nth-child(2)")
         const homePageData = document.querySelector("body > div.container.relative.z-20.min-w-\\[375px\\] > main > div.min-md\\:pr-3\\.5.flex.w-full.flex-col.max-md\\:mb-3 > div:nth-child(3) > div.flex.flex-col > div:nth-child(3)")
-
+console.log('topPriorityData', topPriorityData)
+console.log('homePageData', homePageData)
         // Convert each nodelist to array, merge the 2 arrays, convert back to nodelist
         if (topPriorityData)
             Array.from(topPriorityData.children).forEach(element => fragment.appendChild(element))
-        if (homePageData)
+        if (topPriorityData)
             Array.from(homePageData.children).forEach(element => fragment.appendChild(element))
 
         for (let i = 0; i < fragment.children.length; i++) {
@@ -56,7 +57,6 @@ async function scrapper() {
         return matches
     } catch (err) {
         console.log(err)
-        return {err: err.message}
     }
 }
 
