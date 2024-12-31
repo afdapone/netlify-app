@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 
 
 router.get('/soccer', async (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(await scrape()))
 })
 

@@ -1,3 +1,4 @@
+import crypto from 'crypto'
 import { Window } from 'happy-dom'
 
 
@@ -38,7 +39,7 @@ async function scrapper() {
                 match.active = true
                 continue
             } else {
-                match.id = uuidv4().replaceAll('-', '')
+                match.id = crypto.randomUUID().replaceAll('-', '')
                 match.commence_time = fragment.children[i].querySelector('div:nth-child(1)').textContent.trim()
                 match.commence_time = convertToUTC(match.commence_time)
                 match.home_team = fragment.children[i].querySelector("div:nth-child(2) > div > div:nth-child(1) > div:nth-child(1)").textContent.trim()
@@ -71,17 +72,6 @@ function convertToUTC(timeString) {
     return utcDate
 }
 
-function uuidv4() {
-    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
-    );
-}
-
-
-// const timeString = "21:20";
-// const utcDatetime = convertToUTC(timeString);
-
-// console.log(utcDatetime.toISOString()); // Output in ISO 8601 format
 
 export default scrapper
 
