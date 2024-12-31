@@ -4,7 +4,7 @@ import { Window } from 'happy-dom'
 async function scrapper() {
     // Scrape Function
     try {
-        const response = await fetch('https://www.soccervista.c/')
+        const response = await fetch('https://www.soccervista.com')
         const html = await response.text()
 
         // Set up Happy DOM
